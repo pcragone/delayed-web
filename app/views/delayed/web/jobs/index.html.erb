@@ -4,6 +4,10 @@
   <h1><%= title %></h1>
 </div>
 
+Page last updated: <span id="lastUpdated"></span>
+<br>
+<a id="loadNow" href="#">Updated now</a>
+
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -16,7 +20,7 @@
       <th style="width: 115px;">Actions</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="jobRows">
     <% if jobs.any? %>
       <% jobs.each do |job| %>
         <tr>
