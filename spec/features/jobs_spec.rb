@@ -21,4 +21,11 @@ feature 'Jobs' do
 
     expect(page).to have_text('Jobs')
   end
+
+  scenario 'User invokes a job' do
+    visit '/jobs/2'
+    click_button 'Invoke'
+
+    expect(page).to have_text('Jobs')
+  end
 end

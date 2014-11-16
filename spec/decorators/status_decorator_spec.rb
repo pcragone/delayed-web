@@ -33,13 +33,27 @@ describe Delayed::Web::StatusDecorator do
     end
   end
 
+  describe '#can_invoke?' do
+    it 'is true when failed' do
+      expect(failed_job.can_invoke?).to be_true
+    end
+
+    it 'is true when queued' do
+      expect(queued_job.can_invoke?).to be_true
+    end
+
+    it 'is false when executing' do
+      expect(executing_job.can_invoke?).to be_false
+    end
+  end
+
   describe '#can_queue?' do
     it 'is true when failed' do
       expect(failed_job.can_queue?).to be_true
     end
 
-    it 'is true when queued' do
-      expect(queued_job.can_queue?).to be_true
+    it 'is false when queued' do
+      expect(queued_job.can_queue?).to be_false
     end
 
     it 'is false when executing' do

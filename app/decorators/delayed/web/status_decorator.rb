@@ -12,12 +12,16 @@ module Delayed
         end
       end
 
+      def can_invoke?
+        status != 'executing'
+      end
+
       def can_destroy?
         status != 'executing'
       end
 
       def can_queue?
-        status != 'executing'
+        status != 'queued' and status != 'executing'
       end
     end
   end

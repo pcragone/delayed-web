@@ -8,3 +8,6 @@ en:
         destroyed:
           alert: 'Job cannot be deleted because it is already %{status}'
           notice: 'Job destroyed'
+        invoked:
+          alert: 'Job cannot be invoked because it is already %{status}'
+          notice: 'Job invoked'

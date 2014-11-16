@@ -1,6 +1,16 @@
 module Delayed
   module Web
     class JobsController < Delayed::Web::ApplicationController
+      def invoke
+        if job.can_invoke?
+          job.invoke!
+          flash[:notice] = t(:notice, scope: 'delayed/web.flashes.jobs.invoked')
+        else
+          flash[:alert] = t(:alert, scope: 'delayed/web.flashes.jobs.invoked', status: job.status)
+        end
+        redirect_to jobs_path
+      end
+
       def queue
         if job.can_queue?
           job.queue!
