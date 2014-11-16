@@ -18,7 +18,7 @@ function getTime() {
 loadJobs = function () {
   var time = new Date();
 
-  jQuery('table #jobRows').load('jobs.html #jobRows tr', function() {
+  jQuery('table #jobRows').load('jobs #jobRows tr', function() {
     $('#lastUpdated').html(getTime());
   });
 };
