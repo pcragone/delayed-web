@@ -35,6 +35,9 @@ Page last updated: <span id="lastUpdated"></span>
           <td><%= job.attempts %></td>
           <td><%= link_to_if job.last_error.present?, truncate(job.last_error), job_path(job) %></td>
           <td>
+            <% if job.can_invoke? %>
+              <%= button_to 'Invoke', invoke_job_path(job), method: :put, class: 'btn btn-mini', form_class: 'btn-rails pull-left' %>
+            <% end %>
             <% if job.can_queue? %>
               <%= button_to 'Run Next', queue_job_path(job), method: :put, class: 'btn btn-mini', form_class: 'btn-rails pull-left' %>
             <% end %>

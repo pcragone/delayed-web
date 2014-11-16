@@ -3,5 +3,6 @@ Delayed::Web::Engine.routes.draw do
 
   resources :jobs, only: [:destroy, :index, :show] do
     put :queue, on: :member
+    put :invoke, on: :member
   end
 end

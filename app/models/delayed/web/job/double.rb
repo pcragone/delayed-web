@@ -31,6 +31,10 @@ module Delayed
         true
       end
 
+      def invoke!
+        true
+      end
+
       def destroy
         self
       end
